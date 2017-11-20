@@ -17,4 +17,11 @@ var controller = (function(budgetCtrl, UTCtrl) {
     // 4. Caluculate the budget
     // 5. Display the budeget on the UI
   });
+
+  document.addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+      console.log('ENTER was pressed.');
+    }
+  });
+
 })(budgetController, UIController);
