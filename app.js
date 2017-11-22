@@ -24,7 +24,7 @@ var budgetController = (function() {
 
   return {
     addItem: function(type, des, val) {
-      var newItem
+      var newItem;
 
       // Create new ID
       if (data.allItems[type].length > 0 ) {
@@ -56,8 +56,8 @@ var UIController = (function() {
     inputDescription: '.add__description',
     inputValue: '.add__value',
     inputBtn: '.add__btn',
-    incomeController: '.income__list',
-    expensesController: '.expenses__list'
+    incomeContainer: '.income__list',
+    expensesContainer: '.expenses__list'
   };
 
   return {
@@ -73,22 +73,17 @@ var UIController = (function() {
     var html, newHtml, element;
     if (type === 'inc') {
       element = DOMstrings.incomeContainer;
-      html =  '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div>
-      <div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete">
-      <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div>
-      </div>';
+      html =  '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 
     } else if (type === 'exp') {
       element = DOMstrings.expensesContainer;
-      html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix">
-      <div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn">
-      <i class="ion-ios-close-outline"></i></button></div></div></div>';
+      html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
     }
-    newHtml = html.replace(%id%, obj.id);
-    newHtml = html.replace(%description%, obj.description);
-    newHtml = html.replace(%value%, obj.value);
+    newHtml = html.replace('%id%', obj.id);
+    newHtml = newHtml.replace('%description%', obj.description);
+    newHtml = newHtml.replace('%value%', obj.value);
 
-    document.querySelector(element).insertAddjacentHtml('beforeend', newHtml);
+    document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
     },
 
     getDOMStrings: function() {
